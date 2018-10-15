@@ -4,6 +4,9 @@ import Home, {
 import Dashboard, {
     fetchData as DashboardFetch
 } from './../../components/pages/Dashboard/Dashboard.jsx';
+import Login, {
+    fetchData as LoginFetch
+} from './../../components/pages/Login/Login.jsx';
 const routes = [
     {
         path: '/',
@@ -18,6 +21,13 @@ const routes = [
         component: Dashboard,
         fetchFn: DashboardFetch,
         authLevel: 'private'
+    },
+    {
+        path: '/login',
+        exact: true,
+        component: Login,
+        fetchFn: LoginFetch,
+        authLevel: 'public'
     }
 ];
 

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import Routes from './../Routes/Routes.jsx';
+import PublicLayout from './PublicLayout/PublicLayout.jsx';
+import PrivateLayout from './PrivateLayout/PrivateLayout.jsx';
 
 class Layout extends Component {
     render() {
         return (
             <>
-                <Routes />
+                <PublicLayout />
+                <PrivateLayout />
             </>
         );
     }

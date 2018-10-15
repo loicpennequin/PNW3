@@ -5,11 +5,11 @@
 const ctrl = require('./../../../controllers/api').withHandler;
 const { publicRouter, privateRouter } = require('./../apiRouter.js').routers;
 
-publicRouter.get('/users', (req, res, next) =>
+privateRouter.get('/users', (req, res, next) =>
     ctrl.User('findAll', (req, res, next) => [req.query])(req, res, next)
 );
 
-publicRouter.get('/users/:id', (req, res, next) =>
+privateRouter.get('/users/:id', (req, res, next) =>
     ctrl.User('findById', (req, res, next) => [req.params.id, req.query])(
         req,
         res,
@@ -22,10 +22,11 @@ publicRouter.post('/users', (req, res, next) =>
 );
 
 privateRouter.delete('/users/:id', (req, res, next) =>
-    ctrl.User('destroy', (req, res, next) => [
-        req.params.id,
-        req.query
-    ])(req, res, next)
+    ctrl.User('destroy', (req, res, next) => [req.params.id, req.query])(
+        req,
+        res,
+        next
+    )
 );
 
 privateRouter.put('/users/:id', (req, res, next) =>

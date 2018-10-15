@@ -16,7 +16,7 @@ global.logger = require('./logger/logger.js');
 const express = require('express');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const passport = require('passport');
 
 /*  =============================================================================
@@ -48,7 +48,7 @@ app.use(passport.initialize());
     ============================================================================= */
 logger.info(`Initializing routes...
       =============================================================================`);
-require('./routes')(app);
+app.use(require('./routes'));
 
 /*  =============================================================================
     Socket.io Config

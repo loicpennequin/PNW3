@@ -49,7 +49,7 @@
     exact: true,
     component: ${uName},
     fetchFn: ${uName}Fetch,
-    authLevel: ${argv.private ? 'private' : 'public'}
+    authLevel: ${argv.private ? "'private'" : "'public'"}
 },`;
             routes = routes.slice(0,routes.indexOf('[')) + routesArray + routes.slice(routes.indexOf(']'));
 
