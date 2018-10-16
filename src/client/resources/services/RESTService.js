@@ -3,40 +3,43 @@ import { dedupe } from 'wretch-middlewares';
 import constants from './constants.js';
 
 const getToken = () => `Bearer ${localStorage.getItem('token')}`;
+let w;
+let init = cfg => {
+    w = wretch(constants.API_URL + '/api')
+        .middlewares([dedupe()])
+        .options({ credentials: 'include', mode: 'cors' })
+        .resolve(resolver =>
+            resolver
+                .notFound(async (error, req) => {
+                    console.log(error);
+                    // TODO
+                    return { error: 404 };
+                })
+                .unauthorized(async (error, req) => {
+                    cfg.unauthorized();
+                    throw new Error(error);
+                })
+                .internalError(async (error, req) => {
+                    console.log(error);
+                    return { error: 500 };
+                })
+                .json(json => {
+                    if (json.token) {
+                        localStorage.setItem('token', json.token);
+                    }
+                    if (json._userId) {
+                        localStorage.setItem('uid', json._userId);
+                    }
+                    delete json.token;
+                    return json;
+                })
+        );
+};
 
-let w = wretch(constants.API_URL + '/api')
-    .middlewares([dedupe()])
-    .options({ credentials: 'include', mode: 'cors' })
-    .resolve(resolver =>
-        resolver
-            .notFound(async (error, req) => {
-                console.log(error);
-                // TODO
-                return { error: 404 };
-            })
-            .unauthorized(async (error, req) => {
-                console.log(error);
-                // TODO
-                return { error: 401 };
-            })
-            .internalError(async (error, req) => {
-                console.log(error);
-                return { error: 500 };
-            })
-            .json(json => {
-                if (json.token) {
-                    localStorage.setItem('token', json.token);
-                }
-                if (json._userId) {
-                    localStorage.setItem('uid', json._userId);
-                }
-                delete json.token;
-                return json;
-            })
-    );
+export { init };
 
 export default {
-    w: w,
+    w: () => w,
     get: (url, params) =>
         w
             .url(url)

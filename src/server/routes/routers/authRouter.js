@@ -7,7 +7,7 @@ router.get(
     '/isloggedin',
     ensureAuth,
     (req, res, next) => ctrl.refreshToken(req, res, next),
-    ({ token }, res) => res.jon({ token })
+    ({ token, user }, res) => res.json({ token, _userId: user.id })
 );
 
 module.exports = router;
