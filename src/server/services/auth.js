@@ -10,14 +10,15 @@ const logger = require('./../logger/logger.js');
 
 class AuthService {
     static async _getUser(field, value) {
-        return (await model.User.findOne({ [field]: value })).toJSON({
-            visibility: false
-        });
+        return await model.User.findOne(
+            { [field]: value },
+            { serialize: { visibility: false } }
+        );
     }
 
     static _comparePassword(password, user, done) {
         return bcrypt.compare(password, user.password, (err, result) => {
-            if (err) logger.error(err);
+            if (err) logger.error(err.stack);
             return result !== true ? done(null, false) : done(null, user.id);
         });
     }
@@ -30,7 +31,6 @@ class AuthService {
                 ? AuthService._comparePassword(password, user, done)
                 : done(null, false);
         } catch (err) {
-            logger.error(err.stack);
             return done(err);
         }
     }

@@ -15,13 +15,14 @@ class AuthController {
         logger.debug('Authcontroller.authenticate');
         passport.authenticate('local', { session: false }, (err, user) => {
             if (err) {
-                throw err;
+                res.json({ error: err });
             }
             if (!user) {
-                throw new Error('user not found');
+                res.json({ error: 'incorrect username or password.' });
+            } else {
+                const token = this.generateToken(user);
+                res.json({ token, _userId: user });
             }
-            const token = this.generateToken(user);
-            res.json({ token, _userId: user });
         })(req, res, next);
     }
 

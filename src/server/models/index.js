@@ -13,34 +13,36 @@ class Model {
         return (await this._model
             .forge()
             .where(Object.assign({}, filter))
-            .fetchAll(options)).toJSON();
+            .fetchAll(options)).toJSON(options.serialize);
     }
 
     async findOne(query, options) {
         options = Object.assign({ require: true }, options);
-        return (await this._model.forge(query).fetch(options)).toJSON();
+        return (await this._model.forge(query).fetch(options)).toJSON(
+            options.serialize
+        );
     }
 
     async findById(id, options) {
         return (await this.findOne(
             { [this._model.prototype.idAttribute]: id },
             options
-        )).toJSON();
+        )).toJSON(options.serialize);
     }
 
     async create(data, options) {
         const model = await this._model.forge(data);
-        const errors = model.validationErrors();
-        return errors
-            ? { validationErrors: { ...errors } }
-            : (await model.save(null, options)).toJSON();
+        const validationErrors = model.validationErrors();
+        return validationErrors
+            ? { error: { ...validationErrors } }
+            : (await model.save(null, options)).toJSON(options.serialize);
     }
 
     async destroy(options) {
         options = Object.assign({ require: true }, options);
         return (await this._model
             .forge({ [this._model.prototype.idAttribute]: options.id })
-            .destroy(options)).toJSON();
+            .destroy(options)).toJSON(options.serialize);
     }
 
     async update(data, options) {
@@ -50,7 +52,7 @@ class Model {
             .fetch(options)
             .then(
                 model => (model ? model.save(data, options) : undefined)
-            )).toJSON();
+            )).toJSON(options.serialize);
     }
 }
 

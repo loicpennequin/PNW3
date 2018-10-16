@@ -19,12 +19,16 @@ let w = wretch(constants.API_URL + '/api')
                 // TODO
                 return { error: 401 };
             })
+            .internalError(async (error, req) => {
+                console.log(error);
+                return { error: 500 };
+            })
             .json(json => {
                 if (json.token) {
                     localStorage.setItem('token', json.token);
                 }
                 if (json._userId) {
-                    localStorage.setItem('uid', json.userId);
+                    localStorage.setItem('uid', json._userId);
                 }
                 delete json.token;
                 return json;

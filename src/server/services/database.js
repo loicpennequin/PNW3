@@ -9,7 +9,7 @@ const knex = require('knex')(dbConfig);
 const bookshelf = require('bookshelf')(knex);
 const validator = require('validator');
 
-validator.isRequired = val => val != null;
+validator.isRequired = val => val != null && val != undefined;
 
 bookshelf.plugin('registry');
 bookshelf.plugin('visibility');
