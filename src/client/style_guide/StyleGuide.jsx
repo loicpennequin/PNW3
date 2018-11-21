@@ -13,7 +13,7 @@ const Default = () => <div>Select a component on the left</div>;
 
 class StyleGuide extends Component {
     state = {
-        asyncEnabled: false,
+        asyncEnabled: true,
         timeOut: 2000
     };
 
