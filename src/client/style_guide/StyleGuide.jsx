@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import mocks from './mocks.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Renderer from './StyleGuideRenderer.jsx';
 import './StyleGuide.sass';
 
@@ -13,11 +14,15 @@ const Default = () => <div>Select a component on the left</div>;
 class StyleGuide extends Component {
     state = {
         asyncEnabled: false,
-        timeOut: 1500
+        timeOut: 2000
     };
 
     navigate = link => {
         this.setState({ displayed: { ...link } });
+    };
+
+    back = () => {
+        this.props.history.goBack();
     };
 
     toggleAsync = e => {
@@ -29,7 +34,12 @@ class StyleGuide extends Component {
 
         return (
             <div styleName="style-guide">
-                <header styleName="header">STYLE GUIDE</header>
+                <header styleName="header">
+                    <a href="/" style={{ float: 'left' }}>
+                        <FontAwesomeIcon icon="home" size="md" />
+                    </a>
+                    STYLE GUIDE
+                </header>
                 <div styleName="content">
                     <nav styleName="content_sidebar">
                         <div styleName="sidebar_options">
@@ -37,6 +47,7 @@ class StyleGuide extends Component {
                                 type="checkbox"
                                 checked={asyncEnabled}
                                 onChange={this.toggleAsync}
+                                id="enable-async"
                             />
                             <label htmlFor="enable-async">
                                 Enable async props
@@ -51,7 +62,10 @@ class StyleGuide extends Component {
                         </ul>
                     </nav>
                     <main styleName="content_main">
-                        <div styleName="content_main_component" style={{width: displayed ? 'auto' : '100%'}}>
+                        <div
+                            styleName="content_main_component"
+                            style={{ width: displayed ? 'auto' : '100%' }}
+                        >
                             {displayed ? (
                                 <Renderer
                                     {...displayed}

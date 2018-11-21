@@ -4,6 +4,7 @@ const resources = [
     'typography.sass',
     'spacing.sass',
     'layout.sass',
+    'keyframes.sass',
     'mixins.sass'
 ];
 module.exports = resources.map(file => path.resolve(__dirname, file));

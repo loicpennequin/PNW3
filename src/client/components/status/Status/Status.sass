@@ -2,12 +2,14 @@
     background-color: $color-white
     margin: $spacing-sm
     padding: $spacing-sm
-    max-width: 70ch
+    width: 70ch
 .status_header
     display: flex
     flex-direction: row
     align-items: center
     font-size: $text-sm
+    .loader
+        width: 10em
 
 .status_avatar
     margin-right: $spacing-sm
@@ -19,6 +21,8 @@
 .status_body
     padding: $spacing-sm $spacing-md
     color: $color-gray-2
+    .loader
+        width: 60ch
 
 .status_footer
     padding: 0 $spacing-sm

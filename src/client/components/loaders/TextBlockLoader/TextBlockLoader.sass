@@ -1,0 +1,20 @@
+.loader
+    background-color: $color-gray-4
+    width: var(--width)
+    height: var(--height)
+    margin-bottom: $spacing-xs
+    border-radius: $spacing-xs
+    &.sm
+        --width: 8em
+        --height: #{$text-xs}
+    &.md
+        --width: 8em
+        --height: #{$text-sm}
+    &.lg
+        --width: 8em
+        --height: #{$text-md}
+    &.xl
+        --width: 8em
+        --height: #{$text-lg}
+    &:global
+        +loader-block
