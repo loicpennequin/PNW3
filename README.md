@@ -1,4 +1,6 @@
-# Messenger-like application using React and nodejs
+# Pop Network
+
+Social net work for the past, present and future students at [Pop School](https://pop.eu.com/popschool/)
 
 ## Prerequisites:
 
@@ -9,6 +11,6 @@
 ## Setup
 
 -   `npm run setup:init`
--   wait for the promp in command lne to fill in your mySQL credentials
+-   wait for the prompt in command lne to fill in your mySQL credentials
 -   Open your browser of choice and go to http://localhost:8000
 -   ...that's it.
