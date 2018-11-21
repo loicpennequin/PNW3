@@ -7,7 +7,9 @@ import routes from './resources/services/routesService.js';
 import './styles/app.sass';
 import './resources/services/iconService.js';
 
-if (typeof window !== 'undefined') {
+if (!__IS_BROWSER__) {
+    require('source-map-support').install();
+} else {
     document.addEventListener('DOMContentLoaded', () => {
         hydrate(<App routes={routes} />, document.getElementById('app'));
     });

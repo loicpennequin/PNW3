@@ -1,0 +1,39 @@
+.wrapper
+    background-color: $color-white
+    margin: $spacing-sm
+    padding: $spacing-sm
+    max-width: 70ch
+.status_header
+    display: flex
+    flex-direction: row
+    align-items: center
+    font-size: $text-sm
+
+.status_avatar
+    margin-right: $spacing-sm
+
+.status_author
+    color: $color-black
+    font-weight: bold
+
+.status_body
+    padding: $spacing-sm $spacing-md
+    color: $color-gray-2
+
+.status_footer
+    padding: 0 $spacing-sm
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+
+.status_action
+    margin-right: $spacing-sm
+    font-size: $text-sm
+    color: $color-primary
+    &:last-of-type
+        margin-right: 0
+    &:hover
+        color: $color-primary-dark
+
+.status_action_icon
+    margin-right: $spacing-xs

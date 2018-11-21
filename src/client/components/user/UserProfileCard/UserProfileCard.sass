@@ -1,0 +1,49 @@
+.wrapper
+    background-color: $color-white
+    width: 15em
+    box-shadow: 0 $spacing-xxs $spacing-xxs rgba(0,0,0,0.2)
+    color: $color-gray-2
+
+.header
+    position: relative
+    display: flex
+    justify-content: center
+    background: linear-gradient(130DEG, $color-primary, $color-secondary)
+    padding: $spacing-xl $spacing-md
+
+.avatar
+    position: absolute
+    bottom: 0
+    transform: translateY(50%)
+
+.body
+    text-align: center
+    padding: $spacing-xl $spacing-md $spacing-md
+
+.icon-options
+    position: absolute
+    top: $spacing-sm
+    right: $spacing-sm
+    color: $color-white
+
+.footer
+    display: flex
+    flex-direction: row
+    padding: $spacing-sm $spacing-md
+    // align-items: center
+
+.social-bar
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+    flex-grow: 1
+    .link
+        color: $color-primary
+        padding-top: $spacing-xxs
+
+.friends-count
+    text-align: center
+    .count
+        font-weight: bold
+        font-size: $text-lg
+        color: $color-primary

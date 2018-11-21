@@ -1,0 +1,26 @@
+.wrapper
+    background: $color-secondary
+    border-radius: 50%
+    display: flex
+    justify-content: center
+    align-items: center
+    color: $color-white
+    font-size: var(--font-size)
+    width: var(--size)
+    height: var(--size)
+    border: solid 1px $color-white
+    overflow: hidden
+    &.sm
+        --size: 2.5rem
+        --font-size: #{$text-sm}
+    &.md
+        --size: 4rem
+        --font-size: #{$text-md}
+    &.lg
+        --size: 6rem
+        --font-size: #{$text-lg}
+    &.xl
+        --size: 8rem
+        --font-size: #{$text-xl}
+    img
+        width: 100%

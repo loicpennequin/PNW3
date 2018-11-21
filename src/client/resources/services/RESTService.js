@@ -17,6 +17,9 @@ let init = cfg => {
                 })
                 .unauthorized(async (error, req) => {
                     cfg.unauthorized();
+                    console.log(error);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('uid');
                     throw new Error(error);
                 })
                 .internalError(async (error, req) => {
@@ -30,8 +33,7 @@ let init = cfg => {
                     if (json._userId) {
                         localStorage.setItem('uid', json._userId);
                     }
-                    delete json.token;
-                    return json;
+                    return json.data;
                 })
         );
 };
