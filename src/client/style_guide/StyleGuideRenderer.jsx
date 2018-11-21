@@ -8,7 +8,11 @@ class StyleGuideRenderer extends Component {
             JSON.stringify(nextProps.asyncProps) !==
                 JSON.stringify(prevState.asyncProps)
         ) {
-            return { props: nextProps.props, asyncProps: nextProps.asyncProps, asyncPropsLoaded : {} };
+            return {
+                props: nextProps.props,
+                asyncProps: nextProps.asyncProps,
+                asyncPropsLoaded: {}
+            };
         } else {
             return null;
         }
@@ -17,10 +21,10 @@ class StyleGuideRenderer extends Component {
     state = {
         props: this.props.props,
         asyncProps: {},
-        asyncPropsLoaded: {},
+        asyncPropsLoaded: {}
     };
 
-    componentDidMount(){
+    componentDidMount() {
         this._loadAsyncProps();
     }
 
@@ -28,10 +32,13 @@ class StyleGuideRenderer extends Component {
         this._loadAsyncProps();
     }
 
-    _loadAsyncProps(){
-        if (JSON.stringify(this.state.asyncProps) !== JSON.stringify(this.state.asyncPropsLoaded)) {
-            setTimeout( () => {
-                this.setState({asyncPropsLoaded: this.props.asyncProps});
+    _loadAsyncProps() {
+        if (
+            JSON.stringify(this.state.asyncProps) !==
+            JSON.stringify(this.state.asyncPropsLoaded)
+        ) {
+            setTimeout(() => {
+                this.setState({ asyncPropsLoaded: this.props.asyncProps });
             }, this.props.timeOut);
         }
     }
@@ -39,7 +46,6 @@ class StyleGuideRenderer extends Component {
     render() {
         const Component = this.props.component;
         const { props, asyncPropsLoaded } = this.state;
-        console.log(asyncPropsLoaded);
         return <Component {...props} {...asyncPropsLoaded} />;
     }
 }

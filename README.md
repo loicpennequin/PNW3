@@ -4,9 +4,9 @@ Social net work for the past, present and future students at [Pop School](https:
 
 ## Prerequisites:
 
--   nodeJS > 10.0.0
--   npm > 6.3.0
--   MySQL > 5.6
+-   [nodeJS](https://nodejs.org/en/) > 10.0.0
+-   npm > 6.0.0
+-   [MySQL](https://www.mysql.com/fr/) > 5.6
 
 ## Setup
 
