@@ -1,5 +1,7 @@
 .wrapper
     display: flex
+    width: 100%
+    max-width: 70ch
 
 .comment_avatar
     margin-right: $spacing-sm
@@ -7,7 +9,7 @@
 .comment_content
     flex-grow: 1
     background-color: $color-white
-    border: solid 1px $co   lor-gray-4
+    border: solid 1px $color-gray-4
 
 .comment_header
     background-color: $color-gray-5
@@ -35,6 +37,8 @@
 
 .comment_body
     padding: $spacing-sm
+    .loader
+        width: 100%
 
 .comment_footer
     padding: $spacing-xs $spacing-sm

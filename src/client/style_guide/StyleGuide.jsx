@@ -58,10 +58,7 @@ class StyleGuide extends Component {
                         </ul>
                     </nav>
                     <main styleName="content_main">
-                        <div
-                            styleName="content_main_component"
-                            style={{ width: displayed ? 'auto' : '100%' }}
-                        >
+                        <div styleName="content_main_component">
                             {displayed ? (
                                 <Renderer
                                     {...displayed}

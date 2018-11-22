@@ -1,0 +1,17 @@
+.loader
+    background-color: $color-gray-4
+    width: var(--size)
+    height: var(--size)
+    border-radius: 50%
+    &.xs
+        --size: 1em
+    &.sm
+        --size: 2.5em
+    &.md
+        --size: 4em
+    &.lg
+        --size: 6em
+    &.xl
+        --size: 8em
+    &:global
+        +loader-block
