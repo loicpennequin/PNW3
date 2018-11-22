@@ -9,17 +9,23 @@ import './Status.sass';
 
 const LoaderTemplate = status => (
     <div styleName="wrapper">
-        <header styleName="status_header">
-            <Avatar user={status?.author} size="sm" styleName="status_avatar" />
-            <div>
+        <div styleName="status">
+            <header styleName="status_header">
+                <Avatar
+                    user={status?.author}
+                    size="sm"
+                    styleName="status_avatar"
+                />
+                <div>
+                    <TextBlockLoader size="sm" styleName="loader" />
+                </div>
+            </header>
+            <div styleName="status_body">
+                <TextBlockLoader size="sm" styleName="loader" />
                 <TextBlockLoader size="sm" styleName="loader" />
             </div>
-        </header>
-        <div styleName="status_body">
-            <TextBlockLoader size="sm" styleName="loader" />
-            <TextBlockLoader size="sm" styleName="loader" />
+            <footer styleName="status_footer" />
         </div>
-        <footer styleName="status_footer" />
     </div>
 );
 export { LoaderTemplate };
@@ -80,7 +86,7 @@ const Status = ({ status }) => {
                     </button>
                 </footer>
             </div>
-            {showcomments && <CommentList comments={status.comments}/>}
+            {showcomments && <CommentList comments={status.comments} />}
         </div>
     );
 };

@@ -14,11 +14,11 @@ module.exports = env => ({
             env.NODE_ENV === 'production'
                 ? path.resolve(__dirname, '../../src/client/index.js')
                 : [
-                      'webpack-hot-middleware/client?path=http://localhost:8001/__webpack_hmr',
+                      // 'webpack-hot-middleware/client?path=http://localhost:8001/__webpack_hmr',
                       path.resolve(__dirname, '../../src/client/index.js')
                   ],
         styleguide:  [
-              'webpack-hot-middleware/client?path=http://localhost:8001/__webpack_hmr',
+              // 'webpack-hot-middleware/client?path=http://localhost:8001/__webpack_hmr',
               path.resolve(__dirname, './../../src/client/style_guide')
           ],
     },

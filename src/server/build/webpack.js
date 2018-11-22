@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
+// const webpackHotMiddleware = require('webpack-hot-middleware');
 const express = require('express');
 const webpackConfig = require('./../../../webpack.config.js');
 
@@ -25,7 +25,7 @@ module.exports = () =>
                     stats: 'minimal'
                 })
             );
-            app.use(webpackHotMiddleware(compiler));
+            // app.use(webpackHotMiddleware(compiler));
             app.listen(parseInt(process.env.PORT, 10) + 1 || 8001);
         } else {
             resolve();
