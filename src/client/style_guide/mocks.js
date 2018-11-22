@@ -14,6 +14,18 @@ const DEFAULT_USER = customProps => ({
     ...customProps
 });
 
+const DEFAULT_COMMENT = customProps => ({
+    id: chance.integer({ min: 1, max: 9999 }),
+    author: DEFAULT_USER(),
+    body: chance.paragraph({ sentences: chance.integer({ min: 1, max: 2 }) }),
+    created_at: chance.date({
+        year: 2018,
+        month: new Date().getMonth(),
+        day: chance.integer({ min: 1, max: new Date().getDate() })
+    }),
+    likes_count: chance.integer({ min: 1, max: 10 })
+});
+
 const DEFAULT_STATUS = customProps => {
     let status = {
         id: chance.integer({ min: 1, max: 9999 }),
@@ -40,7 +52,10 @@ const DEFAULT_STATUS = customProps => {
                 created_at: chance.date({
                     year: 2018,
                     month: new Date().getMonth(),
-                    day: chance.integer({ min: status.created_at.getDate(), max: new Date().getDate() })
+                    day: chance.integer({
+                        min: status.created_at.getDate(),
+                        max: new Date().getDate()
+                    })
                 })
             })
         );
@@ -48,19 +63,7 @@ const DEFAULT_STATUS = customProps => {
     return status;
 };
 
-const DEFAULT_COMMENT = customProps => ({
-    id: chance.integer({ min: 1, max: 9999 }),
-    author: DEFAULT_USER(),
-    body: chance.paragraph({ sentences: chance.integer({ min: 1, max: 2 }) }),
-    created_at: chance.date({
-        year: 2018,
-        month: new Date().getMonth(),
-        day: chance.integer({ min: 1, max: new Date().getDate() })
-    }),
-    likes_count: chance.integer({ min: 1, max: 10 }),
-});
-
-const DEFAULT_STATUS_LIST = (amount) => {
+const DEFAULT_STATUS_LIST = amount => {
     let statuses = [];
     for (let i = 0; i < (amount || 6); i++) {
         statuses.push(
@@ -78,5 +81,6 @@ const DEFAULT_STATUS_LIST = (amount) => {
 export default {
     DEFAULT_USER,
     DEFAULT_STATUS,
-    DEFAULT_STATUS_LIST
+    DEFAULT_STATUS_LIST,
+    DEFAULT_COMMENT
 };

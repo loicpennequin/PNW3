@@ -1,13 +1,16 @@
 .wrapper
     background-color: $color-white
     margin: $spacing-sm
-    padding: $spacing-sm
     width: 70ch
+    box-shadow: 0 2px $spacing-xxs rgba(0,0,0,0.2)
+    border-radius: $spacing-xs
+
 .status_header
     display: flex
     flex-direction: row
     align-items: center
     font-size: $text-sm
+    padding: $spacing-sm
     .loader
         width: 10em
 
@@ -25,10 +28,11 @@
         width: 60ch
 
 .status_footer
-    padding: 0 $spacing-sm
+    padding: $spacing-sm
     display: flex
     flex-direction: row
     justify-content: flex-end
+    border-top: solid 1px $color-gray-4
 
 .status_action
     margin-right: $spacing-sm

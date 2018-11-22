@@ -28,3 +28,17 @@
 
 =loader-block
     animation: loader-block 2s infinite alternate
+
+=after
+    content: ''
+    position: absolute
+
+=triangle-right($size, $color)
+    border-style: solid
+    border-width: $size $size $size 0
+    border-color: transparent transparent transparent $color
+
+=triangle-left($size, $color)
+    border-style: solid
+    border-width: $size $size $size 0
+    border-color: transparent $color transparent transparent

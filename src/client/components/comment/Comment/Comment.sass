@@ -1,0 +1,42 @@
+.wrapper
+    display: flex
+
+.comment_avatar
+    margin-right: $spacing-sm
+
+.comment_content
+    flex-grow: 1
+    background-color: $color-white
+    border: solid 1px $co   lor-gray-4
+
+.comment_header
+    background-color: $color-gray-5
+    border-bottom: solid 1px $color-gray-4
+    padding: $spacing-xs
+    position: relative
+    font-size: $text-sm
+    &::before
+        +after
+        +triangle-left(9px, $color-gray-4)
+        top: $spacing-xxs
+        left: 0
+        transform: translateX(-100%) translateY(-1px)
+    &::after
+        +after
+        +triangle-left(8px, $color-gray-5)
+        top: $spacing-xxs
+        left: 0
+        transform: translateX(-100%)
+
+
+.comment_author
+    font-size: $text-md
+    font-weight: bold
+
+.comment_body
+    padding: $spacing-sm
+
+.comment_footer
+    padding: $spacing-xs $spacing-sm
+    font-size: $text-xs
+    border-top: solid 1px $color-gray-4

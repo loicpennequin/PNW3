@@ -32,7 +32,7 @@ class StyleGuide extends Component {
             <div styleName="style-guide">
                 <header styleName="header">
                     <a href="/" style={{ float: 'left' }}>
-                        <FontAwesomeIcon icon="home" size="md" />
+                        <FontAwesomeIcon icon="home" size="1x" />
                     </a>
                     STYLE GUIDE
                 </header>
