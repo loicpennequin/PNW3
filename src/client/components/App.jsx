@@ -4,7 +4,7 @@ import { Provider } from 'react-contextual';
 import store from './../resources/store/store.js';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './../resources/services/i18NextService.js';
-import { hot } from 'react-hot-loader';
+// import { hot } from 'react-hot-loader';
 import { BrowserRouter, StaticRouter } from 'react-router-dom';
 import Layout from './layouts/Layout.jsx';
 
@@ -38,4 +38,5 @@ class App extends Component {
     }
 }
 
-export default hot(module)(App);
+// export default hot(module)(App);
+export default App;

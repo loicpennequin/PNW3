@@ -1,10 +1,14 @@
 .wrapper
-    background-color: $color-white
-    margin: $spacing-sm
+    margin: $spacing-sm $spacing-sm $spacing-md
     width: 100%
     max-width: 70ch
-    box-shadow: 0 2px $spacing-xxs rgba(0,0,0,0.2)
+
+.status
+    background-color: $color-white
+    width: 100%
     border-radius: $spacing-xs
+    box-shadow: 0 2px $spacing-xxs rgba(0,0,0,0.2)
+    margin-bottom: $spacing-xs
 
 .status_header
     display: flex
@@ -39,6 +43,9 @@
     margin-right: $spacing-sm
     font-size: $text-sm
     color: $color-primary
+    cursor: pointer
+    background: none
+    border: none
     &:last-of-type
         margin-right: 0
     &:hover

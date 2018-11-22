@@ -63,9 +63,9 @@ const DEFAULT_STATUS = customProps => {
     return status;
 };
 
-const DEFAULT_STATUS_LIST = amount => {
+const DEFAULT_STATUS_LIST = (amount = chance.integer({ min: 4, max: 8 })) => {
     let statuses = [];
-    for (let i = 0; i < (amount || 6); i++) {
+    for (let i = 0; i < amount; i++) {
         statuses.push(
             DEFAULT_STATUS({
                 comments_count: chance.integer({ min: 0, max: 5 })
@@ -78,9 +78,23 @@ const DEFAULT_STATUS_LIST = amount => {
     return statuses;
 };
 
+const DEFAULT_COMMENT_LIST = (amount = chance.integer({ min: 3, max: 6 })) => {
+    let comments = [];
+    for (let i = 0; i < amount; i++) {
+        comments.push(
+            DEFAULT_COMMENT()
+        );
+    }
+    comments.sort(
+        (a, b) => (a.created_at.getTime() > b.created_at.getTime() ? -1 : 1)
+    );
+    return comments;
+};
+
 export default {
     DEFAULT_USER,
     DEFAULT_STATUS,
     DEFAULT_STATUS_LIST,
-    DEFAULT_COMMENT
+    DEFAULT_COMMENT,
+    DEFAULT_COMMENT_LIST
 };

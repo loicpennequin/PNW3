@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
+// import { hot } from 'react-hot-loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import components from './components.js';
 import Renderer from './StyleGuideRenderer.jsx';
@@ -9,7 +9,7 @@ const Default = () => <div>Select a component on the left</div>;
 
 class StyleGuide extends Component {
     state = {
-        asyncEnabled: true,
+        asyncEnabled: false,
         timeOut: 2000
     };
 
@@ -32,7 +32,7 @@ class StyleGuide extends Component {
             <div styleName="style-guide">
                 <header styleName="header">
                     <a href="/" style={{ float: 'left' }}>
-                        <FontAwesomeIcon icon="home" size="1x" />
+                        <FontAwesomeIcon icon="home" size="sm" />
                     </a>
                     STYLE GUIDE
                 </header>
@@ -75,4 +75,5 @@ class StyleGuide extends Component {
     }
 }
 
-export default hot(module)(StyleGuide);
+// export default hot(module)(StyleGuide);
+export default StyleGuide;

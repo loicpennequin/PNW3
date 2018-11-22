@@ -4,6 +4,7 @@ import UserProfileCard from './../components/user/UserProfileCard/UserProfileCar
 import Status from './../components/status/Status/Status.jsx';
 import StatusList from './../components/status/StatusList/StatusList.jsx';
 import Comment from './../components/comment/Comment/Comment.jsx';
+import CommentList from './../components/comment/CommentList/CommentList.jsx';
 
 export default [
     {
@@ -32,6 +33,13 @@ export default [
         component: Comment,
         asyncProps: {
             comment: mocks.DEFAULT_COMMENT()
+        }
+    },
+    {
+        name: 'Comment List',
+        component: CommentList,
+        asyncProps: {
+            comments: mocks.DEFAULT_COMMENT_LIST()
         }
     }
 ];

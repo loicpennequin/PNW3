@@ -1,6 +1,7 @@
+// import './resources/utils/hot-loader-config.js';
 import React from 'react';
 import { hydrate } from 'react-dom';
-import { hot } from 'react-hot-loader';
+// import { hot } from 'react-hot-loader';
 import './resources/services/ioService.js';
 import App from './components/App.jsx';
 import routes from './resources/services/routesService.js';
@@ -15,6 +16,7 @@ if (!__IS_BROWSER__) {
     });
 }
 
-const SSREntry = hot(module)(App);
+// const SSREntry = hot(module)(App);
+const SSREntry = App;
 
 export { routes, SSREntry };

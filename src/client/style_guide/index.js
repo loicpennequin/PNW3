@@ -1,3 +1,4 @@
+// import './../resources/utils/hot-loader-config.js';
 import React from 'react';
 import { render } from 'react-dom';
 import './../styles/app.sass';

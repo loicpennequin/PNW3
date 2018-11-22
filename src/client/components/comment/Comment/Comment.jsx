@@ -9,19 +9,24 @@ import './Comment.sass';
 const LoaderTemplate = () => (
     <div styleName="wrapper">
         <aside styleName="comment_avatar">
-            <Avatar size="sm" />
+            <CircleBlockLoader size="sm" />
         </aside>
         <div styleName="comment_content">
             <header styleName="comment_header">
                 <TextBlockLoader size="md"/>
             </header>
-            <div styleName="comment_body"><TextBlockLoader size="md" styleName="loader" /></div>
+            <div styleName="comment_body">
+                <TextBlockLoader size="md" styleName="loader" />
+                <TextBlockLoader size="md" styleName="loader" />
+            </div>
             <footer styleName="comment_footer">
                 <CircleBlockLoader size="xs" />
             </footer>
         </div>
     </div>
 );
+
+export { LoaderTemplate };
 
 const Comment = ({ comment }) => {
     if (!comment) {
