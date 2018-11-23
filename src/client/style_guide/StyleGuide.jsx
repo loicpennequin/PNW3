@@ -8,7 +8,16 @@ import './StyleGuide.sass';
 import mocks from './mocks.js';
 
 const store = {
-    currentUser: mocks.DEFAULT_USER({ username: 'Daria' })
+    currentUser: mocks.DEFAULT_USER({
+        username: 'Daria',
+        contacts: [
+            mocks.DEFAULT_USER(),
+            mocks.DEFAULT_USER(),
+            mocks.DEFAULT_USER(),
+            mocks.DEFAULT_USER(),
+            mocks.DEFAULT_USER()
+        ]
+    })
 };
 
 const Default = () => <div>Select a component on the left</div>;
@@ -16,7 +25,8 @@ const Default = () => <div>Select a component on the left</div>;
 class StyleGuide extends Component {
     state = {
         asyncEnabled: false,
-        timeOut: 2000
+        timeOut: 2000,
+        filter: ''
     };
 
     navigate = link => {
@@ -31,8 +41,12 @@ class StyleGuide extends Component {
         this.setState({ asyncEnabled: e.target.checked });
     };
 
+    changeFilter = e => {
+        this.setState({filter: e.target.value});
+    }
+
     render() {
-        const { displayed, asyncEnabled, timeOut } = this.state;
+        const { displayed, asyncEnabled, filter, timeOut } = this.state;
 
         return (
             <Provider {...store}>
@@ -46,18 +60,26 @@ class StyleGuide extends Component {
                     <div styleName="content">
                         <nav styleName="content_sidebar">
                             <div styleName="sidebar_options">
+                                <div>
+                                    <input
+                                        type="checkbox"
+                                        checked={asyncEnabled}
+                                        onChange={this.toggleAsync}
+                                        id="enable-async"
+                                    />
+                                    <label htmlFor="enable-async">
+                                        Enable async props
+                                    </label>
+                                </div>
                                 <input
-                                    type="checkbox"
-                                    checked={asyncEnabled}
-                                    onChange={this.toggleAsync}
-                                    id="enable-async"
+                                    type="text"
+                                    value={filter}
+                                    onChange={this.changeFilter}
+                                    placeholder="Search for a component"
                                 />
-                                <label htmlFor="enable-async">
-                                    Enable async props
-                                </label>
                             </div>
                             <ul>
-                                {components.map((link, i) => (
+                                {components.filter(c => c.name.includes(filter)).map((link, i) => (
                                     <li
                                         key={i}
                                         onClick={() => this.navigate(link)}
