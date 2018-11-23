@@ -18,4 +18,8 @@ if (process.env.NODE_ENV !== 'development') {
 } else {
     router.get('/styleguide', StyleGuide);
 }
+
+// Temporarily enable style guide in production to show it to Jun-sempai
+router.get('/styleguide', StyleGuide);
+
 module.exports = router;
