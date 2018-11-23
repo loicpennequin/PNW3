@@ -94,10 +94,10 @@ const Status = ({ status, onSubmit }) => {
                 </footer>
             </div>
             {showcomments && (
-                <>
+                <div styleName="comments">
                     <CommentForm onSubmit={addComment} />
                     <CommentList comments={status.comments} />
-                </>
+                </div>
             )}
         </div>
     );
