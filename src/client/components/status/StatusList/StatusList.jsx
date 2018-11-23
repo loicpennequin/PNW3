@@ -3,7 +3,7 @@ import Status, { LoaderTemplate } from './../Status/Status.jsx';
 
 import './StatusList.sass';
 
-const StatusList = ({ statuses }) => {
+const StatusList = ({ statuses, onSubmit }) => {
     if (!statuses) {
         return (
             <div styleName="wrapper">
@@ -25,7 +25,11 @@ const StatusList = ({ statuses }) => {
     return (
         <div styleName="wrapper">
             {statuses?.map(status => (
-                <Status key={'status-' + status?.id} status={status} />
+                <Status
+                    key={'status-' + status?.id}
+                    status={status}
+                    onsubmit={onSubmit}
+                />
             ))}
         </div>
     );

@@ -13,7 +13,7 @@ const LoaderTemplate = () => (
         </aside>
         <div styleName="comment_content">
             <header styleName="comment_header">
-                <TextBlockLoader size="md"/>
+                <TextBlockLoader size="md" />
             </header>
             <div styleName="comment_body">
                 <TextBlockLoader size="md" styleName="loader" />
@@ -30,7 +30,7 @@ export { LoaderTemplate };
 
 const Comment = ({ comment }) => {
     if (!comment) {
-        return <LoaderTemplate/>;
+        return <LoaderTemplate />;
     }
     return (
         <div styleName="wrapper">

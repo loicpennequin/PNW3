@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 // import { hot } from 'react-hot-loader';
+import { Provider } from 'react-contextual';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import components from './components.js';
 import Renderer from './StyleGuideRenderer.jsx';
 import './StyleGuide.sass';
+import mocks from './mocks.js';
+
+const store = {
+    currentUser: mocks.DEFAULT_USER({ username: 'Daria' })
+};
 
 const Default = () => <div>Select a component on the left</div>;
 
@@ -29,48 +35,53 @@ class StyleGuide extends Component {
         const { displayed, asyncEnabled, timeOut } = this.state;
 
         return (
-            <div styleName="style-guide">
-                <header styleName="header">
-                    <a href="/" style={{ float: 'left' }}>
-                        <FontAwesomeIcon icon="home" size="sm" />
-                    </a>
-                    STYLE GUIDE
-                </header>
-                <div styleName="content">
-                    <nav styleName="content_sidebar">
-                        <div styleName="sidebar_options">
-                            <input
-                                type="checkbox"
-                                checked={asyncEnabled}
-                                onChange={this.toggleAsync}
-                                id="enable-async"
-                            />
-                            <label htmlFor="enable-async">
-                                Enable async props
-                            </label>
-                        </div>
-                        <ul>
-                            {components.map((link, i) => (
-                                <li key={i} onClick={() => this.navigate(link)}>
-                                    {link.name}
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
-                    <main styleName="content_main">
-                        <div styleName="content_main_component">
-                            {displayed ? (
-                                <Renderer
-                                    {...displayed}
-                                    timeOut={asyncEnabled ? timeOut : 0}
+            <Provider {...store}>
+                <div styleName="style-guide">
+                    <header styleName="header">
+                        <a href="/" style={{ float: 'left' }}>
+                            <FontAwesomeIcon icon="home" size="sm" />
+                        </a>
+                        STYLE GUIDE
+                    </header>
+                    <div styleName="content">
+                        <nav styleName="content_sidebar">
+                            <div styleName="sidebar_options">
+                                <input
+                                    type="checkbox"
+                                    checked={asyncEnabled}
+                                    onChange={this.toggleAsync}
+                                    id="enable-async"
                                 />
-                            ) : (
-                                <Default />
-                            )}
-                        </div>
-                    </main>
+                                <label htmlFor="enable-async">
+                                    Enable async props
+                                </label>
+                            </div>
+                            <ul>
+                                {components.map((link, i) => (
+                                    <li
+                                        key={i}
+                                        onClick={() => this.navigate(link)}
+                                    >
+                                        {link.name}
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+                        <main styleName="content_main">
+                            <div styleName="content_main_component">
+                                {displayed ? (
+                                    <Renderer
+                                        {...displayed}
+                                        timeOut={asyncEnabled ? timeOut : 0}
+                                    />
+                                ) : (
+                                    <Default />
+                                )}
+                            </div>
+                        </main>
+                    </div>
                 </div>
-            </div>
+            </Provider>
         );
     }
 }

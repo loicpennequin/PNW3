@@ -1,0 +1,46 @@
+.wrapper
+    display: flex
+    flex-direction: row
+    align-items: center
+    width: 100%
+    max-width: 70ch
+
+.form
+    display: flex
+    flex-grow: 1
+    margin: $spacing-xs
+
+.input_wrapper
+    position: relative
+    padding: $spacing-xs $spacing-sm
+    background-color: $color-white
+    flex-grow: 1
+    display: flex
+    border: solid 1px $color-gray-4
+    border-radius: $spacing-md
+
+.input
+    border: none
+    background-color: $color-clear
+    flex-grow: 1
+    align-items: center
+    &:focus
+        outline: none
+    &::placeholder
+        font-style: italic
+
+.action-button
+    color: $color-gray-4
+    border: none
+    background: none
+    margin-left: auto
+    font-size: $text-lg
+    cursor: pointer
+    &:hover, &:focus
+        color: $color-gray-3
+        outline: none
+
+.emoji-picker
+    position: absolute
+    right: 0
+    top: calc(100% + #{$spacing-xs})

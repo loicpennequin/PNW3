@@ -11,7 +11,7 @@ const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = env => ({
     mode: env.NODE_ENV,
-    // devtool: 'inline-source-maps',
+    devtool: 'inline-source-maps',
     output: {
         filename: '[name].js',
         publicPath: '/assets/'

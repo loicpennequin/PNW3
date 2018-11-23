@@ -5,6 +5,7 @@ import createMarkup from './../../../resources/utils/createMarkup.js';
 import Avatar from './../../UI/Avatar/Avatar.jsx';
 import TextBlockLoader from './../../loaders/TextBlockLoader/TextBlockLoader.jsx';
 import CommentList from './../../comment/CommentList/CommentList.jsx';
+import CommentForm from './../../comment/CommentForm/CommentForm.jsx';
 import './Status.sass';
 
 const LoaderTemplate = status => (
@@ -24,17 +25,23 @@ const LoaderTemplate = status => (
                 <TextBlockLoader size="sm" styleName="loader" />
                 <TextBlockLoader size="sm" styleName="loader" />
             </div>
-            <footer styleName="status_footer" />
+            <footer styleName="status_footer loading" />
         </div>
     </div>
 );
+
 export { LoaderTemplate };
 
-const Status = ({ status }) => {
+const Status = ({ status, onSubmit }) => {
     const [showcomments, setShowcomments] = useState(false);
     const toggleComments = () => {
         setShowcomments(!showcomments);
     };
+
+    const addComment = formdata => {
+        onSubmit(formdata);
+    };
+
     if (!status) {
         return <LoaderTemplate />;
     }
@@ -86,7 +93,12 @@ const Status = ({ status }) => {
                     </button>
                 </footer>
             </div>
-            {showcomments && <CommentList comments={status.comments} />}
+            {showcomments && (
+                <>
+                    <CommentForm onSubmit={addComment} />
+                    <CommentList comments={status.comments} />
+                </>
+            )}
         </div>
     );
 };
