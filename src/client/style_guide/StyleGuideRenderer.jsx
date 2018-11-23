@@ -37,7 +37,8 @@ class StyleGuideRenderer extends Component {
             JSON.stringify(this.state.asyncProps) !==
             JSON.stringify(this.state.asyncPropsLoaded)
         ) {
-            setTimeout(() => {
+            clearTimeout(this.timeout);
+            this.timeout = setTimeout(() => {
                 this.setState({ asyncPropsLoaded: this.props.asyncProps });
             }, this.props.timeOut);
         }
