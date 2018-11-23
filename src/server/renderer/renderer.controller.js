@@ -22,7 +22,7 @@ const getInitialData = async (req, res, routes) => {
 };
 
 module.exports = async (req, res) => {
-    logger.info(`AppController : ${req.url}
+    logger.info(`AppRenderer : ${req.url}
        ===================================`);
 
     try {
@@ -55,7 +55,7 @@ module.exports = async (req, res) => {
                     routes
                 })
             );
-            res.send(template('app', markup, initialData));
+            res.send(await template('app', markup, 'app', initialData));
         }
     } catch (err) {
         logger.error(err.stack);

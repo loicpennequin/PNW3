@@ -1,8 +1,7 @@
 const template = require('./template.js');
 
-module.exports = (req, res) => {
-    logger.info(`StyleGuideController : ${req.url}
+module.exports = async (req, res) => {
+    logger.info(`StyleGuideRenderer : ${req.url}
        ===================================`);
-
-    res.send(template('styleguide', '', undefined));
+    res.send(await template('styleguide', '', 'styleguide', undefined));
 };

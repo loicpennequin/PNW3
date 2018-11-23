@@ -58,15 +58,17 @@ module.exports = env => ({
             {
                 test: /app.sass/,
                 use: [
-                    'css-hot-loader',
-                    MiniCssExtractPlugin.loader,
+                    env.NODE_ENV !== 'production' && 'css-hot-loader',
+                    env.NODE_ENV === 'production'
+                        ? MiniCssExtractPlugin.loader
+                        : 'style-loader',
                     {
                         loader: 'css-loader'
                     },
                     {
                         loader: 'sass-loader'
                     }
-                ]
+                ].filter(loader => loader !== false)
             },
             {
                 test: /\.css$/,
@@ -84,7 +86,10 @@ module.exports = env => ({
         new webpack.DefinePlugin({
             __IS_BROWSER__: true
         }),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[name].0[id].css",
+        }),
         new ManifestPlugin({
             seed: {
                 permissions: ['cookies', '*://localhost:800/*']

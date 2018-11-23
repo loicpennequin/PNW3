@@ -16,7 +16,7 @@ routes.forEach(route => {
 if (process.env.NODE_ENV !== 'development') {
     // Temporarily enable style guide in production to show it to Jun-sempai
     router.get('/styleguide', StyleGuide);
-    
+
     router.get('/*', Renderer);
 } else {
     // router.get('/styleguide', StyleGuide);

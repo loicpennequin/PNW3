@@ -24,7 +24,10 @@ dotenv.config({
     path: './config/.env'
 });
 
-module.exports = env => [
-    merge(commonCfg({...env, port: process.env.PORT || 8000}), clientCfg({...env, port: process.env.PORT || 8000})),
-    merge(commonCfg({...env, port: process.env.PORT || 8000}), serverCfg)
-];
+module.exports = env => {
+    console.log(env);
+    return [
+        merge(commonCfg({...env, port: process.env.PORT || 8000}), clientCfg({...env, port: process.env.PORT || 8000})),
+        merge(commonCfg({...env, port: process.env.PORT || 8000}), serverCfg)
+    ];
+}
