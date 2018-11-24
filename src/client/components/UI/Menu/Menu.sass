@@ -1,0 +1,47 @@
+.links-wrapper
+    --cell-size: 85px
+    --gap: #{$spacing-sm}
+    display: grid
+    grid-template-columns: repeat(3 , 1fr)
+    padding: $spacing-sm
+    background-color: $color-white
+    grid-gap: $spacing-sm
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2)
+    height: calc(4 * var(--cell-size) + 5 * var(--gap))
+.link
+    height: var(--cell-size)
+    width: var(--cell-size)
+    background: linear-gradient($color-primary-light, $color-primary-dark)
+    display: flex
+    align-items: flex-end
+    padding: $spacing-xxs
+    border-radius: $spacing-xs
+    position: relative
+    overflow: hidden
+    cursor: pointer
+    &:hover
+        filter: brightness(115%)
+    // &:after
+    //     +after
+    //     z-index: 1
+    //     top: 0
+    //     left: 0
+    //     width: 100%
+    //     height: 100%
+    //     background: linear-gradient($color-primary-dark, $color-primary-light)
+    //     opacity: 0
+    //     pointer-events: none
+    //     transition: all 0.3s
+    // &:hover:after
+    //     opacity: 1
+    a
+        position: relative
+        z-index: 2
+        font-size: $text-sm
+        font-family: $font-title
+        padding: $spacing-xxs
+        background-color: rgba(0,0,0,0.3)
+        color: $color-white
+        display: block
+        max-width: 100%
+        word-break: break-all

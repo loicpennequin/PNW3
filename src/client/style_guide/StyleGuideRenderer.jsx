@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 
 class StyleGuideRenderer extends Component {
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (
-            JSON.stringify(nextProps.props) !==
-                JSON.stringify(prevState.props) ||
-            JSON.stringify(nextProps.asyncProps) !==
-                JSON.stringify(prevState.asyncProps)
-        ) {
+        if (nextProps.name !== prevState.name) {
             return {
+                name: nextProps.name,
                 props: nextProps.props,
                 asyncProps: nextProps.asyncProps,
                 asyncPropsLoaded: {}
@@ -19,6 +15,7 @@ class StyleGuideRenderer extends Component {
     }
 
     state = {
+        name: '',
         props: this.props.props,
         asyncProps: {},
         asyncPropsLoaded: {}

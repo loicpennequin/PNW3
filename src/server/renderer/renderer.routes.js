@@ -19,8 +19,7 @@ if (process.env.NODE_ENV !== 'development') {
 
     router.get('/*', Renderer);
 } else {
-    // router.get('/styleguide', StyleGuide);
+    router.get('/styleguide', StyleGuide);
 }
-
 
 module.exports = router;

@@ -63,6 +63,74 @@ const DEFAULT_STATUS = customProps => {
     return status;
 };
 
+const DEFAULT_MENU = () => [
+    {
+        label: 'Dashboard',
+        to: '/dashboard',
+        system: true
+    },
+    {
+        label: 'Profile',
+        to: '/profile/1',
+        system: true
+    },
+    {
+        label: 'Messages',
+        to: '/messages',
+        system: true
+    },
+    {
+        label: 'Projects',
+        to: '/projects',
+        system: true
+    },
+    {
+        label: 'Apps',
+        to: '/apps',
+        system: true
+    },
+    {
+        label: 'Settings',
+        to: '/settings',
+        system: true
+    },
+    {
+        label: 'App1',
+        to: '/apps/1',
+        system: false
+    },
+    {
+        label: 'App2',
+        to: '/apps/2',
+        system: false
+    },
+    {
+        label: 'App3',
+        to: '/apps/3',
+        system: false
+    },
+    {
+        label: 'App4',
+        to: '/apps/4',
+        system: false
+    },
+    {
+        label: 'App5',
+        to: '/apps/5',
+        system: false
+    },
+    {
+        label: 'App6',
+        to: '/apps/6',
+        system: false
+    },
+    {
+        label: 'App7',
+        to: '/apps/7',
+        system: false
+    }
+];
+
 const DEFAULT_STATUS_LIST = (amount = chance.integer({ min: 4, max: 8 })) => {
     let statuses = [];
     for (let i = 0; i < amount; i++) {
@@ -81,9 +149,7 @@ const DEFAULT_STATUS_LIST = (amount = chance.integer({ min: 4, max: 8 })) => {
 const DEFAULT_COMMENT_LIST = (amount = chance.integer({ min: 3, max: 6 })) => {
     let comments = [];
     for (let i = 0; i < amount; i++) {
-        comments.push(
-            DEFAULT_COMMENT()
-        );
+        comments.push(DEFAULT_COMMENT());
     }
     comments.sort(
         (a, b) => (a.created_at.getTime() > b.created_at.getTime() ? -1 : 1)
@@ -96,5 +162,6 @@ export default {
     DEFAULT_STATUS,
     DEFAULT_STATUS_LIST,
     DEFAULT_COMMENT,
-    DEFAULT_COMMENT_LIST
+    DEFAULT_COMMENT_LIST,
+    DEFAULT_MENU
 };

@@ -6,8 +6,15 @@ import StatusList from './../components/status/StatusList/StatusList.jsx';
 import Comment from './../components/comment/Comment/Comment.jsx';
 import CommentList from './../components/comment/CommentList/CommentList.jsx';
 import CommentForm from './../components/comment/CommentForm/CommentForm.jsx';
-
+import Menu from './../components/UI/Menu/Menu.jsx';
 export default [
+    {
+        name: 'Menu',
+        component: Menu,
+        asyncProps: {
+            menu: mocks.DEFAULT_MENU()
+        }
+    },
     {
         name: 'User Profile Card',
         component: UserProfileCard,

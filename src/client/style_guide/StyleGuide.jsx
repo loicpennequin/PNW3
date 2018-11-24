@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { hot } from 'react-hot-loader';
 import { Provider } from 'react-contextual';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import components from './components.js';
 import Renderer from './StyleGuideRenderer.jsx';
@@ -42,67 +43,73 @@ class StyleGuide extends Component {
     };
 
     changeFilter = e => {
-        this.setState({filter: e.target.value});
-    }
+        this.setState({ filter: e.target.value });
+    };
 
     render() {
         const { displayed, asyncEnabled, filter, timeOut } = this.state;
 
         return (
             <Provider {...store}>
-                <div styleName="style-guide">
-                    <header styleName="header">
-                        <a href="/" style={{ float: 'left' }}>
-                            <FontAwesomeIcon icon="home" size="sm" />
-                        </a>
-                        STYLE GUIDE
-                    </header>
-                    <div styleName="content">
-                        <nav styleName="content_sidebar">
-                            <div styleName="sidebar_options">
-                                <div>
+                <Router>
+                    <div styleName="style-guide">
+                        <header styleName="header">
+                            <a href="/" style={{ float: 'left' }}>
+                                <FontAwesomeIcon icon="home" size="sm" />
+                            </a>
+                            STYLE GUIDE
+                        </header>
+                        <div styleName="content">
+                            <nav styleName="content_sidebar">
+                                <div styleName="sidebar_options">
+                                    <div>
+                                        <input
+                                            type="checkbox"
+                                            checked={asyncEnabled}
+                                            onChange={this.toggleAsync}
+                                            id="enable-async"
+                                        />
+                                        <label htmlFor="enable-async">
+                                            Enable async props
+                                        </label>
+                                    </div>
                                     <input
-                                        type="checkbox"
-                                        checked={asyncEnabled}
-                                        onChange={this.toggleAsync}
-                                        id="enable-async"
+                                        type="text"
+                                        value={filter}
+                                        onChange={this.changeFilter}
+                                        placeholder="Search for a component"
                                     />
-                                    <label htmlFor="enable-async">
-                                        Enable async props
-                                    </label>
                                 </div>
-                                <input
-                                    type="text"
-                                    value={filter}
-                                    onChange={this.changeFilter}
-                                    placeholder="Search for a component"
-                                />
-                            </div>
-                            <ul>
-                                {components.filter(c => c.name.includes(filter)).map((link, i) => (
-                                    <li
-                                        key={i}
-                                        onClick={() => this.navigate(link)}
-                                    >
-                                        {link.name}
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
-                        <main styleName="content_main">
-                            <div styleName="content_main_component">
-                                {displayed ? (
-                                    <Renderer
-                                        {...displayed}
-                                        timeOut={asyncEnabled ? timeOut : 0}
-                                    />
-                                ) : (
-                                    <Default />
-                                )}
-                            </div>
-                        </main>
+                                <ul>
+                                    {components
+                                        .filter(c => c.name.includes(filter))
+                                        .map((link, i) => (
+                                            <li
+                                                key={i}
+                                                onClick={() =>
+                                                    this.navigate(link)
+                                                }
+                                            >
+                                                {link.name}
+                                            </li>
+                                        ))}
+                                </ul>
+                            </nav>
+                            <main styleName="content_main">
+                                <div styleName="content_main_component">
+                                    {displayed ? (
+                                        <Renderer
+                                            {...displayed}
+                                            timeOut={asyncEnabled ? timeOut : 0}
+                                        />
+                                    ) : (
+                                        <Default />
+                                    )}
+                                </div>
+                            </main>
+                        </div>
                     </div>
-                </div>
+                </Router>
             </Provider>
         );
     }
