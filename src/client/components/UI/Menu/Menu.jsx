@@ -23,7 +23,9 @@ const Menu = ({ menu }) => {
         for (let i = 0; i <= displayedItems().length; i += ITEMS_PER_PAGE) {
             pageBtns.push(
                 <button
-                    styleName="pagination_item"
+                    styleName={`pagination_item ${
+                        i === offset ? 'active' : ''
+                    }`}
                     key={`menu-pagination-${i}`}
                     onClick={() => setOffset(i)}
                 />
