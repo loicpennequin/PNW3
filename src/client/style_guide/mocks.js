@@ -97,37 +97,44 @@ const DEFAULT_MENU = () => [
     {
         label: 'App1',
         to: '/apps/1',
-        system: false
+        system: false,
+        color: 'hsl(0,60%,55%)'
     },
     {
         label: 'App2',
         to: '/apps/2',
-        system: false
+        system: false,
+        color: 'hsl(30,60%,55%)'
     },
     {
         label: 'App3',
         to: '/apps/3',
-        system: false
+        system: false,
+        color: 'hsl(60,60%,55%)'
     },
     {
         label: 'App4',
         to: '/apps/4',
-        system: false
+        system: false,
+        color: 'hsl(90,60%,55%)'
     },
     {
         label: 'App5',
         to: '/apps/5',
-        system: false
+        system: false,
+        color: 'hsl(120,60%,55%)'
     },
     {
         label: 'App6',
         to: '/apps/6',
-        system: false
+        system: false,
+        color: 'hsl(150,60%,55%)'
     },
     {
         label: 'App7',
         to: '/apps/7',
-        system: false
+        system: false,
+        color: 'hsl(180,60%,55%)'
     }
 ];
 

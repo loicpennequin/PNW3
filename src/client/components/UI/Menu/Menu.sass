@@ -1,17 +1,24 @@
-.links-wrapper
+.wrapper
+    background-color: $color-white
+    padding: $spacing-sm
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2)
+
+.links_wrapper
     --cell-size: 85px
     --gap: #{$spacing-sm}
     display: grid
     grid-template-columns: repeat(3 , 1fr)
     padding: $spacing-sm
-    background-color: $color-white
     grid-gap: $spacing-sm
-    box-shadow: 0 5px 5px rgba(0,0,0,0.2)
     height: calc(4 * var(--cell-size) + 5 * var(--gap))
+    width: calc(3 * var(--cell-size) + 4 * var(--gap))
+    
 .link
+    --color: rgba(0,0,0,0)
     height: var(--cell-size)
     width: var(--cell-size)
-    background: linear-gradient($color-primary-light, $color-primary-dark)
+    background: linear-gradient(var(--color), var(--color)), linear-gradient($color-primary-lighter, $color-primary)
+    background-blend-mode: color
     display: flex
     align-items: flex-end
     padding: $spacing-xxs
@@ -19,6 +26,7 @@
     position: relative
     overflow: hidden
     cursor: pointer
+    transition: all 0.2s
     &:hover
         filter: brightness(115%)
     // &:after
@@ -34,14 +42,42 @@
     //     transition: all 0.3s
     // &:hover:after
     //     opacity: 1
-    a
-        position: relative
-        z-index: 2
-        font-size: $text-sm
-        font-family: $font-title
+.link_text
+    position: relative
+    z-index: 2
+    font-size: $text-sm
+    font-family: $font-title
+    padding: $spacing-xxs
+    background-color: rgba(0,0,0,0.3)
+    color: $color-white
+    display: block
+    max-width: 100%
+    word-break: break-all
+
+.pagination_wrapper
+    display: flex
+    justify-content: center
+    flex-direction: row
+
+.pagination_item
+    background: none
+    border: none
+    user-select: none
+    font-size: $text-lg
+    border: solid 2px $color-gray-2
+    cursor: pointer
+    border-radius: 50%
+    padding: $spacing-xxs
+    margin: $spacing-xxs
+    &:hover, &:focus
+        outline: none
+        background-color: $color-gray-2
+
+.searchbar_wrapper
+    display: flex
+    justify-content: center
+    input
         padding: $spacing-xxs
-        background-color: rgba(0,0,0,0.3)
-        color: $color-white
-        display: block
-        max-width: 100%
-        word-break: break-all
+        &::placeholder
+            color: $color-gray-4
+            font-style: italic

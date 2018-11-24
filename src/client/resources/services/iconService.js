@@ -6,8 +6,18 @@ import {
     faEllipsisV,
     faThumbsUp,
     faShare,
-    faComments
+    faComments,
+    faSearch
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab, faHome, faEllipsisV, faThumbsUp, faShare, faComments, faSmile);
+library.add(
+    fab,
+    faHome,
+    faEllipsisV,
+    faThumbsUp,
+    faShare,
+    faComments,
+    faSmile,
+    faSearch
+);
 export default library;
