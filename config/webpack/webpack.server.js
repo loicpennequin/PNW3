@@ -23,7 +23,7 @@ module.exports = {
                             sourceMap: true,
                             modules: true,
                             localIdentName:
-                                '[name]-[local]--[hash:base64:5]'
+                                '[name]-[local]'
                         }
                     },
                     {

@@ -12,18 +12,18 @@
     "plugins": [
         "@babel/plugin-transform-react-display-name",
         "@babel/plugin-proposal-optional-chaining",
-        "transform-react-jsx",
+        "@babel/plugin-transform-react-jsx",
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         "@babel/plugin-syntax-dynamic-import",
         ["@babel/plugin-proposal-class-properties", { "loose": false }],
         "@babel/plugin-proposal-object-rest-spread",
-        "transform-react-constant-elements",
+        "@babel/plugin-transform-react-constant-elements",
         "react-hot-loader/babel",
         [
             "react-css-modules",
             {
                 "webpackHotModuleReloading": true,
-                "generateScopedName": "[name]-[local]--[hash:base64:5]",
+                "generateScopedName": "[name]-[local]",
                 "handleMissingStyleName": "warn",
                 "filetypes": {
                     ".scss": {

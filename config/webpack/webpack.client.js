@@ -28,16 +28,16 @@ module.exports = env => ({
                 test: /\.sass$/,
                 exclude: /app.sass/,
                 use: [
-                    env.NODE_ENV !== 'production' && 'css-hot-loader',
+                    // env.NODE_ENV !== 'production' && 'css-hot-loader',
                     env.NODE_ENV === 'production'
                         ? MiniCssExtractPlugin.loader
                         : 'style-loader',
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: env.NODE_ENV !== 'production',
+                            // sourceMap: env.NODE_ENV !== 'production',
                             modules: true,
-                            localIdentName: '[name]-[local]--[hash:base64:5]'
+                            localIdentName: '[name]-[local]'
                         }
                     },
                     {
