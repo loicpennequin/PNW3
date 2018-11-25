@@ -45,8 +45,7 @@ const DEFAULT_STATUS = customProps => {
         comments: [],
         ...customProps
     };
-
-    for (let i = 0; i < status.comments_count; i++) {
+    [...Array(status.comments_count)].forEach((_, i) => {
         status.comments.push(
             DEFAULT_COMMENT({
                 created_at: chance.date({
@@ -59,7 +58,7 @@ const DEFAULT_STATUS = customProps => {
                 })
             })
         );
-    }
+    });
     return status;
 };
 
@@ -155,9 +154,9 @@ const DEFAULT_STATUS_LIST = (amount = chance.integer({ min: 4, max: 8 })) => {
 
 const DEFAULT_COMMENT_LIST = (amount = chance.integer({ min: 3, max: 6 })) => {
     let comments = [];
-    for (let i = 0; i < amount; i++) {
+    [...Array(amount)].forEach((_, i) => {
         comments.push(DEFAULT_COMMENT());
-    }
+    });
     comments.sort(
         (a, b) => (a.created_at.getTime() > b.created_at.getTime() ? -1 : 1)
     );

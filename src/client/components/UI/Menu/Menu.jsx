@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Menu.sass';
 
-const LoaderTemplate = () => <div>Loading your menu...</div>;
+const LoaderTemplate = () => <div styleName="wrapper">
+    <div styleName="searchbar_wrapper"/>
+    <ul styleName="links_wrapper">
+        Loading your menu...
+    </ul>
+    <div styleName="pagination_wrapper"/>
+</div>;
 
 const Menu = ({ menu }) => {
     const [offset, setOffset] = useState(0);

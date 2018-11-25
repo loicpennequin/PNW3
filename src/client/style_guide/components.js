@@ -7,6 +7,11 @@ import Comment from './../components/comment/Comment/Comment.jsx';
 import CommentList from './../components/comment/CommentList/CommentList.jsx';
 import CommentForm from './../components/comment/CommentForm/CommentForm.jsx';
 import Menu from './../components/UI/Menu/Menu.jsx';
+import ContactList from './../components/contact/ContactList/ContactList.jsx';
+import Navbar from './../components/UI/Navbar/Navbar.jsx';
+import RegisterForm from './../components/user/RegisterForm/RegisterForm.jsx';
+import LoginForm from './../components/user/LoginForm/LoginForm.jsx';
+
 export default [
     {
         name: 'Menu',
@@ -69,5 +74,21 @@ export default [
         asyncProps: {
             comments: mocks.DEFAULT_COMMENT_LIST()
         }
+    },
+    {
+        name: 'Contact List',
+        component: ContactList,
+    },
+    {
+        name: 'Navbar',
+        component: Navbar,
+    },
+    {
+        name: 'Register Form',
+        component: RegisterForm,
+    },
+    {
+        name: 'Login Form',
+        component: LoginForm,
     }
 ];

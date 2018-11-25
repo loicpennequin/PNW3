@@ -49,66 +49,70 @@ class StyleGuide extends Component {
     render() {
         const { displayed, asyncEnabled, filter, timeOut } = this.state;
 
+        const ui = <div styleName="style-guide">
+            <header styleName="header">
+                <a href="/" style={{ float: 'left' }}>
+                    <FontAwesomeIcon icon="home" size="sm" />
+                </a>
+                STYLE GUIDE
+            </header>
+            <div styleName="content">
+                <nav styleName="content_sidebar">
+                    <div styleName="sidebar_options">
+                        <div>
+                            <input
+                                type="checkbox"
+                                checked={asyncEnabled}
+                                onChange={this.toggleAsync}
+                                id="enable-async"
+                            />
+                            <label htmlFor="enable-async">
+                                Enable async props
+                            </label>
+                        </div>
+                        <input
+                            type="text"
+                            value={filter}
+                            onChange={this.changeFilter}
+                            placeholder="Search for a component"
+                        />
+                    </div>
+                    <ul>
+                        {components
+                            .filter(c => c.name.includes(filter))
+                            .map((link, i) => (
+                                <li key={i}>
+                                    <button
+                                        styleName="content_link"
+                                        onClick={() =>
+                                            this.navigate(link)
+                                        }
+                                    >
+                                        {link.name}
+                                    </button>
+                                </li>
+                            ))}
+                    </ul>
+                </nav>
+                <main styleName="content_main">
+                    <div styleName="content_main_component">
+                        {displayed ? (
+                            <Renderer
+                                {...displayed}
+                                timeOut={asyncEnabled ? timeOut : 0}
+                            />
+                        ) : (
+                            <Default />
+                        )}
+                    </div>
+                </main>
+            </div>
+        </div>;
+        
         return (
             <Provider {...store}>
                 <Router>
-                    <div styleName="style-guide">
-                        <header styleName="header">
-                            <a href="/" style={{ float: 'left' }}>
-                                <FontAwesomeIcon icon="home" size="sm" />
-                            </a>
-                            STYLE GUIDE
-                        </header>
-                        <div styleName="content">
-                            <nav styleName="content_sidebar">
-                                <div styleName="sidebar_options">
-                                    <div>
-                                        <input
-                                            type="checkbox"
-                                            checked={asyncEnabled}
-                                            onChange={this.toggleAsync}
-                                            id="enable-async"
-                                        />
-                                        <label htmlFor="enable-async">
-                                            Enable async props
-                                        </label>
-                                    </div>
-                                    <input
-                                        type="text"
-                                        value={filter}
-                                        onChange={this.changeFilter}
-                                        placeholder="Search for a component"
-                                    />
-                                </div>
-                                <ul>
-                                    {components
-                                        .filter(c => c.name.includes(filter))
-                                        .map((link, i) => (
-                                            <li
-                                                key={i}
-                                                onClick={() =>
-                                                    this.navigate(link)
-                                                }
-                                            >
-                                                {link.name}
-                                            </li>
-                                        ))}
-                                </ul>
-                            </nav>
-                            <main styleName="content_main">
-                                <div styleName="content_main_component">
-                                    {displayed ? (
-                                        <Renderer
-                                            {...displayed}
-                                            timeOut={asyncEnabled ? timeOut : 0}
-                                        />
-                                    ) : (
-                                        <Default />
-                                    )}
-                                </div>
-                            </main>
-                        </div>
-                    </div>
+                    {ui}
                 </Router>
             </Provider>
         );
